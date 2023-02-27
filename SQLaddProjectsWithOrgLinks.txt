@@ -1,0 +1,60 @@
+-- we need to put in Organization info, then project info
+
+-- organization requires Name, Location_ID, Phone_ID, Email_ID, Organization_Type_ID(for clients this ID will = 2)
+-- before we can create the Organization we will need to create Location, Phone and Email and return their ID's into a stored variable
+
+
+/*-- Declare variables for Location ID, Phone ID, and email ID 
+DECLARE @Location_ID INT;
+DECLARE @Phone_ID INT;
+DECLARE @Email_ID INT;
+
+-- Insert email into Location table and get its ID  
+ INSERT INTO Location (Street_Number, Street_Name, City, State, Zip_Code, Country, County)  
+ VALUES ("place the values here from the companies CSV file for each company section");  
+ SET @Location_ID = SCOPE_IDENTITY();  
+
+-- Insert email into Phone table and get its ID  
+ INSERT INTO Phone (Phone_Number, Phone_Type_ID)  
+ VALUES ("put phone number from CSV file here", 1);  
+ SET @Phone_ID = SCOPE_IDENTITY();  
+
+-- Insert email into Email table and get its ID  
+ INSERT INTO Email (Email_Address)  
+ VALUES ("Put email Address here from CSV file(we may have to look these up from the compaies website?)");  
+ SET @Email_ID = SCOPE_IDENTITY();  
+
+
+/*-- Declare variables for Organization_ID to be used to push in with project data
+DECLARE @Organization_ID INT;
+
+
+-- Insert Company data into Organization table and get its ID for the Project Insert link 
+ INSERT INTO Organization (Name, Location_ID, Phone_ID, Email_ID, Organization_Type_ID)  
+ VALUES ("Put Company name test here", @Location_ID, @Phone_ID, @Email_ID, 2);  
+
+
+----------------------------------------------------------------------
+
+
+-- Create a temporary table to store the data from the CSV file 
+-- (or just past in the values from a ceaned up version of the CSV file like we did for employees)
+CREATE TABLE #TempProject
+(Project_Name varchar(100), Project_Number varchar(50), Store_Number varchar(50), Building_Type_ID, Location_ID, Team_ID, Staus_ID, Program_Type_ID);
+
+-- Load the data from the CSV file into the temporary table
+
+BULK INSERT #TempProjects
+FROM '/Users/gioromandiaz/Downloads'(file location of projects here)
+WITH (FORMAT = 'CSV', FIRSTROW = 1, FIELDTERMINATOR = ',', ROWTERMINATOR = '\n');
+
+
+/*-- Declare variables for Building_Type_ID, Location_ID, Team_ID, Staus_ID = 1, Program_Type_ID = (1 = Other, 2 = Wawa, 3 = Walmart, 4 = Publix)
+DECLARE @Building_Type_ID INT;
+DECLARE @Location_ID INT;
+DECLARE @Team_ID_ID INT;
+
+-- Insert email into Location table and get its ID  
+ INSERT INTO Location (Street_Number, Street_Name, City, State, Zip_Code, Country, County)  
+ VALUES ("place the values here from the companies CSV file for each company section");  
+ SET @Location_ID = SCOPE_IDENTITY();
