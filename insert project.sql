@@ -10,8 +10,8 @@ SET @Program_Type_ID = 1;
 
 DECLARE @Location_ID INT;
 
-INSERT INTO Location (Street_Number, Street_Name, City, State, Zip_Code, Country, County)  
-VALUES ();  
+INSERT INTO Location (Street_Number, Street_Name, City, State, Zip_Code, Country, County)ï¿½ 
+VALUES ();ï¿½ 
 SET @Location_ID = SCOPE_IDENTITY();
 
 INSERT INTO Project (Project_Name, Project_Number, Store_Number, Building_Type_ID, Location_ID, Status_ID,
