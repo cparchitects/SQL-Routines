@@ -5,6 +5,8 @@
 DECLARE @Location_ID INT;
 DECLARE @Phone_ID INT;
 DECLARE @Email_ID INT;
+DECLARE @Organization_Type_ID INT;
+SET @Organization_Type_ID = 2;
 
 -- Insert email into Location table and get its ID 
 INSERT INTO Location (Street_Number, Street_Name, City, State, Zip_Code, Country, County) 
@@ -28,12 +30,4 @@ DECLARE @Organization_ID INT;
 
 -- Insert Company data into Organization table and get its IDfor the Project Insert link 
 INSERT INTO Organization (Name, Location_ID, Phone_ID, Email_ID, Organization_Type_ID) 
-VALUES ('Creighton Companies, LLC', @Location_ID, @Phone_ID, @Email_ID, 2); 
-
-/*
-INSERT INTO dbo.Project (Project_Name, Project_Number, Store_Number, Building_Type_ID, Location_ID, Status_ID,
-Program_Type_ID)
-
-VALUES 
-('Warehouse Expansion', 'GHI789', 91011, 3, 5678, 3, 3);
-*/
+VALUES ('Creighton Companies, LLC', @Location_ID, @Phone_ID, @Email_ID, @Organization_Type_ID);
