@@ -1,5 +1,5 @@
 /*
-	Script for adding companies into the DB
+	Script for adding organizations into the DB
 */
 
 DECLARE @Location_ID INT;
